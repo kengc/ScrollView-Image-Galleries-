@@ -14,6 +14,7 @@
 		7374BB771EEF4C58002D2515 /* MANUALScrollViewImageGalleries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7374BB751EEF4C58002D2515 /* MANUALScrollViewImageGalleries.xcdatamodeld */; };
 		7374BB791EEF4C58002D2515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7374BB781EEF4C58002D2515 /* Assets.xcassets */; };
 		7374BB7C1EEF4C58002D2515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7374BB7A1EEF4C58002D2515 /* LaunchScreen.storyboard */; };
+		7374BB8B1EEF5980002D2515 /* ViewControllerTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7374BB8A1EEF5980002D2515 /* ViewControllerTwo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		7374BB781EEF4C58002D2515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7374BB7B1EEF4C58002D2515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7374BB7D1EEF4C58002D2515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7374BB891EEF5980002D2515 /* ViewControllerTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerTwo.h; sourceTree = "<group>"; };
+		7374BB8A1EEF5980002D2515 /* ViewControllerTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerTwo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				7374BB6F1EEF4C58002D2515 /* ViewController.h */,
 				7374BB701EEF4C58002D2515 /* ViewController.m */,
 				7374BB721EEF4C58002D2515 /* Main.storyboard */,
+				7374BB891EEF5980002D2515 /* ViewControllerTwo.h */,
+				7374BB8A1EEF5980002D2515 /* ViewControllerTwo.m */,
 				7374BB781EEF4C58002D2515 /* Assets.xcassets */,
 				7374BB7A1EEF4C58002D2515 /* LaunchScreen.storyboard */,
 				7374BB7D1EEF4C58002D2515 /* Info.plist */,
@@ -154,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7374BB8B1EEF5980002D2515 /* ViewControllerTwo.m in Sources */,
 				7374BB711EEF4C58002D2515 /* ViewController.m in Sources */,
 				7374BB6E1EEF4C58002D2515 /* AppDelegate.m in Sources */,
 				7374BB771EEF4C58002D2515 /* MANUALScrollViewImageGalleries.xcdatamodeld in Sources */,
