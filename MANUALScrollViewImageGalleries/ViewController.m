@@ -8,9 +8,14 @@
 
 #import "ViewController.h"
 
+#import "ViewControllerTwo.h"
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVar;
+
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
 
 @end
 
@@ -28,6 +33,9 @@
 
 -(void)scrollView{
     
+    
+    self.pageControl.numberOfPages = 3;
+    
     CGFloat xOrigin = 0;
     self.scrollVar.pagingEnabled = YES;
     
@@ -39,7 +47,11 @@
         //is bigger than the scrollview
         xOrigin = i * CGRectGetWidth(self.scrollVar.frame);
         
-        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.scrollVar.frame.size.width, self.scrollVar.frame.size.height)];
+        
+        //set to bounds so that it doesnt go up and down x/y
+        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.scrollVar.bounds.size.width, self.scrollVar.bounds.size.height)];
+        image.userInteractionEnabled = true;
+        
         
         image.image = [UIImage imageNamed:imageViews[i]];
         image.contentMode = UIViewContentModeScaleAspectFit;
@@ -48,8 +60,7 @@
 
         UITapGestureRecognizer *TapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTap:)];
         
-        [self.view addGestureRecognizer:TapGesture];
-
+        [image addGestureRecognizer:TapGesture];
         
         
     }
@@ -59,16 +70,63 @@
     self.scrollVar.contentSize = CGSizeMake(imageViews.count * CGRectGetWidth(self.scrollVar.frame), CGRectGetHeight(self.scrollVar.frame));
     
     
+//        self.scrollVar.contentSize = CGSizeMake(imageViews.count * CGRectGetWidth(self.scrollVar.bounds), CGRectGetHeight(self.scrollVar.bounds));
 }
 
 -(void)viewTap:(UITapGestureRecognizer *)sender {
-    //You will also need to connect a segue between the gallery and the detail view controllers directly. Set an identifier, so you can manually trigger it when a user taps.
-    //In the tap gesture's action, figure out which image view the tap occured in, and trigger a segue (hint: if you use performSegueWithIdentifier:sender:, you can pass user data using the sender parameter).
     
-    [self performSegueWithIdentifier:@"SegueIdentifier" sender:self];
+ // [self performSegueWithIdentifier:@"SegueIdentifier" sender:self];
+    //if([sender.view isMemberOfClass:<#(__unsafe_unretained Class)#>])
     
+    UIImageView *imageView = (UIImageView *)sender.view;
+    UIImage *image = imageView.image;
 
+    
+    [self performSegueWithIdentifier:@"SegueIdentifier" sender:image];
+    
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([[segue identifier] isEqualToString:@"SegueIdentifier"]) {
+        // Get destination view controller and don't forget
+        // to cast it to the right class
+        
+        UIImage *image = (UIImage *)sender;
+
+        //SecondViewController *secondController = [segue destinationViewController];
+        ViewControllerTwo *secondController = [segue destinationViewController];
+        // Pass data
+        
+        secondController.img = image;
+        //secondController.name = @"Fancy name";
+    }
+}
+
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    CGFloat pageWidth = scrollView.frame.size.width; // you need to have a **iVar** with getter for scrollView
+    float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    NSLog(@"page: %ld", (long)page);
+
+    
+    
+    //self.pageControl.currentPage = lround(fractionalPage); // you need to have a **iVar** with get
+    //[self.pageControl setCurrentPage:lround(fractionalPage)]; // you need to have a **iVar** with get
+
+    [self.pageControl setCurrentPage:lround(fractionalPage)];
+    NSLog(@"current page: %ld", (long)self.pageControl.currentPage);
+    
+//    CGFloat width = scrollView.frame.size.width;
+//    NSInteger page = (scrollView.contentOffset.x + (0.5f * width)) / width;
+//    
+//    
+//    self.pageControl.currentPage = (int)(scrollView.contentOffset.x / scrollView.frame.size.width);
+}
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -10,4 +10,8 @@
 
 @interface ViewControllerTwo : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic) UIImageView *image;
+
+@property (nonatomic) UIImage *img;
+
 @end

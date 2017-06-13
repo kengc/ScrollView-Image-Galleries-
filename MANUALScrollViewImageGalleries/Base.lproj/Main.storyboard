@@ -18,28 +18,34 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-ko-yhB">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="64" width="343" height="539"/>
                                 <color key="backgroundColor" red="0.06085175835" green="1" blue="0.1247532376" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="QS7-7v-wYf"/>
                                 </connections>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7pv-IX-Snk">
+                                <rect key="frame" x="168" y="536" width="39" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7pv-IX-Snk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9CL-cN-hZy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hZv-ko-yhB" secondAttribute="trailing" id="Egl-kX-Rp1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hZv-ko-yhB" secondAttribute="bottom" id="duy-62-96n"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7pv-IX-Snk" secondAttribute="bottom" constant="30" id="i7m-7d-iVp"/>
                             <constraint firstItem="hZv-ko-yhB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jOE-ge-r6N"/>
                             <constraint firstItem="hZv-ko-yhB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="w2y-ke-wGa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0V1-NX-mfi"/>
                     <connections>
+                        <outlet property="pageControl" destination="7pv-IX-Snk" id="qLy-Ry-hbW"/>
                         <outlet property="scrollVar" destination="hZv-ko-yhB" id="5km-DO-aMp"/>
                         <segue destination="n6M-ze-JC0" kind="show" identifier="SegueIdentifier" id="rMK-SX-fvU"/>
                     </connections>

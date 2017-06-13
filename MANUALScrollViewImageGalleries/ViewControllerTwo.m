@@ -11,7 +11,7 @@
 @interface ViewControllerTwo ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVar;
 
-@property (nonatomic) UIImageView *image;
+//@property (nonatomic) UIImageView *image;
 
 @end
 
@@ -22,7 +22,8 @@
     
     self.image = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.image.translatesAutoresizingMaskIntoConstraints = NO;
-    self.image.image = [UIImage imageNamed:@"Lighthouse-zoomed.jpg"];
+    //self.image.image = [UIImage imageNamed:@"Lighthouse-zoomed.jpg"];
+    self.image.image = _img;
     
     [self.scrollVar addSubview:self.image];
     
