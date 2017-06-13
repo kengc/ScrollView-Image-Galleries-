@@ -11,17 +11,40 @@
 @interface ViewControllerTwo ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollVar;
 
+@property (nonatomic) UIImageView *image;
+
 @end
 
 @implementation ViewControllerTwo
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    
-//    UIImageView *image = [[UIImageView alloc] initWithImage:@"Lighthouse-in-Field.jpg"];
-//    
-//    [self.scrollVar addSubview:image];
+    
+    self.image = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.image.translatesAutoresizingMaskIntoConstraints = NO;
+    self.image.image = [UIImage imageNamed:@"Lighthouse-zoomed.jpg"];
+    
+    [self.scrollVar addSubview:self.image];
+    
+    //imageview lleft side (anchor) we want it to be equal to the scrollviews leading "left"side
+    NSLayoutConstraint * leading = [self.image.leadingAnchor constraintEqualToAnchor:self.scrollVar.leadingAnchor];
+    
+    NSLayoutConstraint * top = [self.image.topAnchor constraintEqualToAnchor:self.scrollVar.topAnchor];
+    
+    NSLayoutConstraint * bottom = [self.image.bottomAnchor constraintEqualToAnchor:self.scrollVar.bottomAnchor];
+    
+    NSLayoutConstraint * trailing = [self.image.trailingAnchor constraintEqualToAnchor:self.scrollVar.trailingAnchor];
+    
+    [self.image.superview addConstraints:@[leading, top, bottom, trailing]];
+    
+    self.scrollVar.minimumZoomScale = 1;
+    self.scrollVar.maximumZoomScale = 3;
+    
+}
+
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    
+    return self.image;
 }
 
 - (void)didReceiveMemoryWarning {
