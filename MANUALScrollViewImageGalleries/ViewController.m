@@ -45,13 +45,30 @@
         image.contentMode = UIViewContentModeScaleAspectFit;
         
         [self.scrollVar addSubview:image];
+
+        UITapGestureRecognizer *TapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTap:)];
+        
+        [self.view addGestureRecognizer:TapGesture];
+
+        
+        
     }
     
     //default content which includes height and width...frame of the base view since it makes
     //it too big. Must use scrollview's height and width since it's smaller than self.view.frame.
     self.scrollVar.contentSize = CGSizeMake(imageViews.count * CGRectGetWidth(self.scrollVar.frame), CGRectGetHeight(self.scrollVar.frame));
+    
+    
 }
 
+-(void)viewTap:(UITapGestureRecognizer *)sender {
+    //You will also need to connect a segue between the gallery and the detail view controllers directly. Set an identifier, so you can manually trigger it when a user taps.
+    //In the tap gesture's action, figure out which image view the tap occured in, and trigger a segue (hint: if you use performSegueWithIdentifier:sender:, you can pass user data using the sender parameter).
+    
+    [self performSegueWithIdentifier:@"SegueIdentifier" sender:self];
+    
+
+}
 
 
 - (void)didReceiveMemoryWarning {

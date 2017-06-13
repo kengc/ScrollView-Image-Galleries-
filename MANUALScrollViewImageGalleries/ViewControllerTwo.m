@@ -43,7 +43,6 @@
 }
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
-    
     return self.image;
 }
 
